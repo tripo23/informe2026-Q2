@@ -90,6 +90,139 @@
             letter-spacing: 0.02em;
         }
         
+        /* Podcast CTA - ARRIBA */
+        .podcast-cta {
+            background: linear-gradient(135deg, #8a5cf2 0%, #a78bfa 100%);
+            padding: 32px 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+        .podcast-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .podcast-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .podcast-icon {
+            font-size: 2.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .podcast-text {
+            flex: 1;
+            min-width: 280px;
+            max-width: 600px;
+            text-align: left;
+        }
+        .podcast-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .podcast-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+        .podcast-button {
+            display: inline-block;
+            background: white;
+            color: var(--violet);
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+        }
+        .podcast-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            background: #f5f3ff;
+        }
+        .podcast-button::after {
+            content: ' ▶';
+            margin-left: 6px;
+        }
+        
+        /* Audio Player */
+        .audio-player-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+        }
+        .audio-player-container.active {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .audio-player {
+            width: 100%;
+        }
+        .audio-player audio {
+            width: 100%;
+            height: 48px;
+            outline: none;
+        }
+        .audio-player audio::-webkit-media-controls-panel {
+            background: linear-gradient(135deg, #8a5cf2 0%, #a78bfa 100%);
+        }
+        .audio-controls-hint {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--violet);
+            text-align: center;
+            margin-top: 8px;
+        }
+        
         /* Hero Stats */
         .hero-stats {
             display: grid;
@@ -201,10 +334,10 @@
             content: '↑ ';
         }
         
-        /* Team Grid - BALANCEADO */
+        /* Team Grid */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmin(280px, 1fr));
             gap: 20px;
             margin-top: 28px;
         }
@@ -229,7 +362,6 @@
             letter-spacing: -0.01em;
             margin-bottom: 20px;
         }
-        /* Q2 - TAMAÑO BALANCEADO */
         .team-q2-value {
             font-family: 'Sora', sans-serif;
             font-size: 2.8rem;
@@ -238,7 +370,6 @@
             line-height: 1;
             margin-bottom: 10px;
         }
-        /* Comparación Q1 un poco más visible */
         .team-comparison-subtle {
             font-family: 'Inter', sans-serif;
             font-size: 0.82rem;
@@ -263,7 +394,6 @@
             transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 6px;
         }
-        /* Stats más legibles */
         .team-stats-simple {
             display: flex;
             justify-content: center;
@@ -334,6 +464,15 @@
         .initiatives-table tbody td:last-child {
             border-right: 1px solid var(--line);
             border-radius: 0 10px 10px 0;
+        }
+        .initiatives-table tbody td:first-child a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .initiatives-table tbody td:first-child a:hover {
+            color: var(--violet);
+            text-decoration: underline;
         }
         
         /* Highlights */
@@ -449,66 +588,100 @@
             line-height: 1.6;
         }
         
-        /* Q3 Preview */
-        .q3-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 18px;
-            margin-top: 28px;
+        /* OKR View */
+        .okr-section {
+            margin-bottom: 48px;
         }
-        .q3-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 24px 22px;
-            border: 2px solid var(--line);
-            transition: all 0.2s;
+        .okr-section:last-child {
+            margin-bottom: 0;
         }
-        .q3-card:hover {
-            border-color: var(--violet);
-            box-shadow: 0 8px 20px rgba(138,92,242,0.12);
-        }
-        .q3-card-title {
+        .okr-title-main {
             font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: var(--ink);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 8px;
             letter-spacing: -0.01em;
         }
-        .q3-kr-badge {
+        .okr-subtitle {
             font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            padding: 4px 9px;
-            border-radius: 6px;
-            background: #f5f3ff;
-            color: var(--violet);
-            border: 1px solid var(--violet-light);
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-        .q3-card-items {
-            list-style: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--muted);
-            line-height: 1.7;
+            margin-bottom: 28px;
+            font-style: italic;
         }
-        .q3-card-items li {
-            padding-left: 18px;
-            position: relative;
-            margin-bottom: 8px;
+        .kr-subsection {
+            margin-bottom: 32px;
         }
-        .q3-card-items li::before {
-            content: '·';
-            position: absolute;
-            left: 0;
-            color: var(--violet);
+        .kr-subsection:last-child {
+            margin-bottom: 0;
+        }
+        .okr-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--violet);
+        }
+        .okr-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 1.4rem;
-            line-height: 1.2;
+            color: var(--violet);
+        }
+        .okr-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+        .okr-initiatives-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+        .okr-initiatives-list li {
+            background: var(--bg-card);
+            border: 2px solid var(--line);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .okr-initiatives-list li:hover {
+            border-color: var(--violet);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(138,92,242,0.15);
+        }
+        .okr-init-name {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ink);
+            flex: 1;
+        }
+        .okr-init-stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        .okr-init-stats span {
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .okr-init-closure {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            min-width: 60px;
+            text-align: right;
         }
         
         footer {
@@ -541,21 +714,15 @@
         @media (max-width: 768px) {
             body { padding: 20px 10px; }
             header, .content, footer { padding: 40px 30px; }
+            .podcast-cta { padding: 24px 30px; }
             h1 { font-size: 2.2rem; }
             .hero-stats { padding: 30px 30px; }
             .stat-value { font-size: 2.5rem; }
             .team-grid { grid-template-columns: 1fr; }
             .comparison-banner { padding: 24px 20px; }
             .team-q2-value { font-size: 2.4rem; }
-        }
-            .initiatives-table tbody td:first-child a {
-            color: var(--ink);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .initiatives-table tbody td:first-child a:hover {
-            color: var(--violet);
-            text-decoration: underline;
+            .podcast-content { flex-direction: column; text-align: center; }
+            .podcast-text { text-align: center; }
         }
     </style>
 </head>
@@ -564,10 +731,37 @@
         <header>
             <div class="header-content">
                 <h1>Cierre Q2 2026</h1>
-                <div class="subtitle">Flow · Resultados y Continuidad Q3</div>
+                <div class="subtitle">Flow · Resultados del Quarter</div>
                 <div class="meta">Flow Prod Ops · Actualizado: 8 julio 2026</div>
             </div>
         </header>
+
+        <!-- Podcast CTA con Player -->
+        <div class="podcast-cta">
+            <div class="podcast-content">
+                <div class="podcast-icon">🎙️</div>
+                <div class="podcast-text">
+                    <div class="podcast-title">Escuchá el Podcast del Q2</div>
+                    <div class="podcast-subtitle">
+                        Resumen en audio: logros, aprendizajes y el camino hacia Q3
+                    </div>
+                </div>
+                <button class="podcast-button" onclick="toggleAudioPlayer()">Escuchar ahora</button>
+            </div>
+            
+            <!-- Audio Player (oculto inicialmente) -->
+            <div class="audio-player-container" id="audioPlayerContainer">
+                <div class="audio-player">
+                    <audio id="podcastAudio" controls>
+                        <source src="podcast_q2_2026.m4a" type="audio/mp4">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+                <div class="audio-controls-hint">
+                    Podés pausar, adelantar o retroceder mientras seguís leyendo el documento
+                </div>
+            </div>
+        </div>
         
         <div class="hero-stats">
             <div class="stat-card animate-in" style="animation-delay: 0.1s;">
@@ -593,11 +787,10 @@
         </div>
         
         <div class="content">
-            <!-- Performance por Equipo BALANCEADO -->
+            <!-- Performance por Equipo -->
             <section class="section">
                 <h2>Performance por Equipo · Q2 vs Q1</h2>
                 
-                <!-- Comparación general con violeta -->
                 <div class="comparison-banner">
                     <div class="comparison-item">
                         <div class="comparison-label">Q1 2026</div>
@@ -693,7 +886,7 @@
                 </div>
             </section>
             
-            <!-- Iniciativas Destacadas -->
+            <!-- Iniciativas Destacadas - ORDENADAS -->
             <section class="section">
                 <h2>Iniciativas Destacadas Q2</h2>
                 <table class="initiatives-table">
@@ -736,6 +929,11 @@
                             <td style="text-align: center;"><strong style="color: var(--teal); font-size: 1.4rem; font-family: 'Sora', sans-serif;">83%</strong></td>
                         </tr>
                         <tr>
+                            <td><strong>Migración a Minerva 11</strong></td>
+                            <td style="text-align: center;">8</td>
+                            <td style="text-align: center;"><strong style="color: var(--warning); font-size: 1.4rem; font-family: 'Sora', sans-serif;">75%</strong></td>
+                        </tr>
+                        <tr>
                             <td><strong><a href="https://tecocloud.atlassian.net/issues/?jql=project%20%3D%20FPR%20AND%20status%20NOT%20IN%20(%22Backlog%22%2C%20%22Cancelled%22)%20AND%20issuetype%20IN%20(Iniciativa%2C%20Discovery)%20AND%20%22a%C3%B1o%20-%20q%22%20%3D%202026-Q2%20AND%20%22bloque%20de%20trabajo%5Bselect%20list%20(multiple%20choices)%5D%22%20%3D%20%22Chromecast%22%20ORDER%20BY%20priority%20DESC%2C%20created%20DESC" target="_blank" rel="noopener noreferrer">Chromecast</a></strong></td>
                             <td style="text-align: center;">4</td>
                             <td style="text-align: center;"><strong style="color: var(--warning); font-size: 1.4rem; font-family: 'Sora', sans-serif;">75%</strong></td>
@@ -758,13 +956,139 @@
                     </tbody>
                 </table>
             </section>
+
+            <!-- Vista por OKRs/KRs -->
+            <section class="section">
+                <h2>Organización por OKRs</h2>
+                <p style="margin-bottom: 36px; color: var(--muted); font-size: 1.05rem; font-family: 'Inter', sans-serif;">
+                    Iniciativas Q2 agrupadas según los Objetivos y Key Results estratégicos de Flow 2026.
+                </p>
+
+                <!-- OKR 1 -->
+                <div class="okr-section">
+                    <div class="okr-title-main">OKR 1 · Ser la plataforma de TV y Streaming líder de Argentina, Uruguay y Paraguay</div>
+                    <div class="okr-subtitle">Liderazgo regional y engagement sostenido</div>
+
+                    <div class="kr-subsection">
+                        <div class="okr-header">
+                            <div class="okr-title">KR 1.2</div>
+                            <div class="okr-desc">Incrementar el Stickiness un 5% por Q</div>
+                        </div>
+                        <ul class="okr-initiatives-list">
+                            <li>
+                                <div class="okr-init-name">Experiencia Mundial</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>11</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--violet);">100%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Roku — Lanzamiento</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>5</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--violet);">100%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Tendencias</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>2</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--danger);">50%</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- OKR 2 -->
+                <div class="okr-section">
+                    <div class="okr-title-main">OKR 2 · Mejorar significativamente la experiencia durante todo el journey de nuestros usuarios</div>
+                    <div class="okr-subtitle">Momentos críticos, navegación y estabilidad</div>
+
+                    <div class="kr-subsection">
+                        <div class="okr-header">
+                            <div class="okr-title">KR 2.1</div>
+                            <div class="okr-desc">Reducir 7pts del stock de detractores en NPS Interna Global</div>
+                        </div>
+                        <ul class="okr-initiatives-list">
+                            <li>
+                                <div class="okr-init-name">Nueva Home Flow 2.0 (ATV)</div>
+                                <div class="okr-init-stats">
+                                    <div>100% parque</div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--violet);">100%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Observabilidad y salud decos</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>4</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--warning);">75%</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="kr-subsection">
+                        <div class="okr-header">
+                            <div class="okr-title">KR 2.2</div>
+                            <div class="okr-desc">Incrementar en 10pts el T2B del CES (exc Linux)</div>
+                        </div>
+                        <ul class="okr-initiatives-list">
+                            <li>
+                                <div class="okr-init-name">Homologaciones dispositivos</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>7</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--violet);">100%</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="kr-subsection">
+                        <div class="okr-header">
+                            <div class="okr-title">KR 2.3</div>
+                            <div class="okr-desc">Minimizar el tiempo de indisponibilidad por fallas masivas en <1.5hs</div>
+                        </div>
+                        <ul class="okr-initiatives-list">
+                            <li>
+                                <div class="okr-init-name">Mitigación de fallas</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>13</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--green);">92%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Experiencia Login</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>6</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--teal);">83%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Migración a Minerva 11</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>8</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--warning);">75%</div>
+                            </li>
+                            <li>
+                                <div class="okr-init-name">Señales en la nube</div>
+                                <div class="okr-init-stats">
+                                    <div>Épicas: <span>4</span></div>
+                                </div>
+                                <div class="okr-init-closure" style="color: var(--danger);">50%</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
             
             <!-- Lo que logramos -->
             <section class="section">
                 <h2>Lo que logramos en Q2</h2>
                 <div class="highlights-grid">
                     <div class="highlight-item">
-                        <div class="highlight-track">Navegación intuitiva</div>
+                        <div class="highlight-track">OKR 2 · KR 2.1 · NPS Interna</div>
                         <div class="highlight-title">Nueva Home Flow 2.0 en ATV</div>
                         <div class="highlight-metric">
                             Desplegada al <strong>100% del parque ATV</strong> en mayo<br>
@@ -774,7 +1098,7 @@
                     </div>
                     
                     <div class="highlight-item">
-                        <div class="highlight-track">Hub de entretenimiento</div>
+                        <div class="highlight-track">OKR 1 · KR 1.2 · Stickiness</div>
                         <div class="highlight-title">Roku — Lanzamiento público</div>
                         <div class="highlight-metric">
                             Salida silenciosa el 20/5, lanzamiento público en junio<br>
@@ -784,17 +1108,17 @@
                     </div>
                     
                     <div class="highlight-item">
-                        <div class="highlight-track">Momentos críticos</div>
-                        <div class="highlight-title">Experiencia Login — Nueva jerarquía</div>
+                        <div class="highlight-track">OKR 2 · KR 2.3 · Indisponibilidad</div>
+                        <div class="highlight-title">Experiencia Login — Mobile</div>
                         <div class="highlight-metric">
-                            <strong>QR como método principal</strong> en STV/ATV y Web<br>
-                            <strong>OTP primero</strong> en Mobile<br>
-                            Eliminación de Línea+PIN en web y mobile
+                            Login UY/PY desplegado en <strong>Android mobile</strong><br>
+                            <strong>OTP como método principal</strong> en Android<br>
+                            Sesión sin expiración en iOS y Android
                         </div>
                     </div>
                     
                     <div class="highlight-item">
-                        <div class="highlight-track">Un Flow más Personal</div>
+                        <div class="highlight-track">OKR 1 · KR 1.2 · Stickiness</div>
                         <div class="highlight-title">Experiencia Mundial</div>
                         <div class="highlight-metric">
                             <strong>100% completado</strong> a tiempo para el evento<br>
@@ -804,7 +1128,7 @@
                     </div>
                     
                     <div class="highlight-item">
-                        <div class="highlight-track">Un Flow más Personal</div>
+                        <div class="highlight-track">OKR 1 · KR 1.2 · Stickiness</div>
                         <div class="highlight-title">Tendencias en Mobile</div>
                         <div class="highlight-metric">
                             <strong>102k clientes únicos</strong> descubrieron contenido<br>
@@ -814,12 +1138,12 @@
                     </div>
                     
                     <div class="highlight-item">
-                        <div class="highlight-track">Platform Next</div>
+                        <div class="highlight-track">OKR 2 · KR 2.3 · Indisponibilidad</div>
                         <div class="highlight-title">Migración a Minerva 11</div>
                         <div class="highlight-metric">
-                            <strong>Finalización de migración</strong> a Minerva 11<br>
-                            Flujos de Mora, Recálculo y Reminders completados<br>
-                            Bloque a cargo de Core y Host
+                            <strong>6 de 8 épicas completadas</strong> en Q2<br>
+                            Flujos de Mora, Recálculo y Reminders migrados<br>
+                            Estabilización de playback en dispositivos
                         </div>
                     </div>
                 </div>
@@ -910,148 +1234,6 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Lo que se viene Q3 -->
-            <section class="section">
-                <h2>Lo que se viene en Q3</h2>
-                <p style="margin-bottom: 32px; color: var(--muted); font-size: 1.05rem; font-family: 'Inter', sans-serif;">
-                    28 iniciativas, 74 épicas, 6 KRs activos — organizadas en los 6 focos estratégicos del quarter.
-                </p>
-                
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Catálogo y Contenido</h3>
-                <div class="q3-grid">
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Nueva Arquitectura Flow
-                            <span class="q3-kr-badge">KR 2.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Arquitectura Mobile — Discovery de experiencia</li>
-                            <li>Nuevo DIP — Design System Pantallas Grandes</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Experiencia Deportes
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>XP escalable para torneos y eventos</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Personalización
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Mi Flow — Favoritos, historial y longpress</li>
-                            <li>Reminders personalizados</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Oferta y Onboarding</h3>
-                <div class="q3-grid">
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Perfiles de Flow
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Nueva experiencia de creación y edición</li>
-                            <li>Experiencia personalizada por perfil</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Gestión de cuenta
-                            <span class="q3-kr-badge">KR 2.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Rediseño de Mi Cuenta en mobile</li>
-                            <li>Elección de cuenta al login (multidomicilio)</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Flow en Martech
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Centro de notificaciones en mobile</li>
-                            <li>Historial y preferencias personalizables</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Playback</h3>
-                <div class="q3-grid">
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Performance en STVs
-                            <span class="q3-kr-badge">KR 2.1</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>XP discriminada para STVs</li>
-                            <li>Autodiagnóstico en STVs</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Señales en la nube
-                            <span class="q3-kr-badge">KR 2.3</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Validación de capacidad de infraestructura</li>
-                            <li>Mejores prácticas AWS para optimizar</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Tendencias
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Tendencias - Personalización</li>
-                            <li>Tendencias - Evolutivo</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Dispositivos</h3>
-                <div class="q3-grid">
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Observabilidad y salud decos
-                            <span class="q3-kr-badge">KR 2.1</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Silent Reboot (Linux)</li>
-                            <li>Metrics Linux Performance (Boot, EPG, Home)</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Migración a Minerva 11
-                            <span class="q3-kr-badge">KR 2.3</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Apagado M10 - Sagemcom BOOT Url</li>
-                        </ul>
-                    </div>
-                    <div class="q3-card">
-                        <div class="q3-card-title">
-                            Roku
-                            <span class="q3-kr-badge">KR 1.2</span>
-                        </div>
-                        <ul class="q3-card-items">
-                            <li>Búsqueda Federada</li>
-                            <li>Navegación convergente pantallas grandes</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
         </div>
         
         <footer>
@@ -1061,6 +1243,23 @@
     </div>
     
     <script>
+        // Toggle audio player visibility
+        function toggleAudioPlayer() {
+            const playerContainer = document.getElementById('audioPlayerContainer');
+            const audio = document.getElementById('podcastAudio');
+            
+            if (playerContainer.classList.contains('active')) {
+                // Si está visible, pausar y ocultar
+                audio.pause();
+                playerContainer.classList.remove('active');
+            } else {
+                // Si está oculto, mostrar y reproducir
+                playerContainer.classList.add('active');
+                audio.play();
+            }
+        }
+        
+        // Progress bar animations
         window.addEventListener('load', () => {
             const progressBars = document.querySelectorAll('.progress-fill');
             progressBars.forEach((bar, index) => {
