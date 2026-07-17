@@ -1259,6 +1259,11 @@
             }
         }
         
+        // Set default playback speed to 1.25x
+        document.getElementById('podcastAudio').addEventListener('loadedmetadata', function() {
+            this.playbackRate = 1.25;
+        });
+
         // Progress bar animations
         window.addEventListener('load', () => {
             const progressBars = document.querySelectorAll('.progress-fill');
