@@ -149,14 +149,14 @@
             font-size: 0.95rem;
             opacity: 0.95;
             line-height: 1.4;
+        }
         .podcast-disclaimer {
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            opacity: 0.85;
-            margin-top: 8px;
+            font-size: 0.72rem;
+            opacity: 0.55;
+            margin-top: 18px;
             font-style: italic;
             line-height: 1.3;
-        }
         }
         .podcast-button {
             display: inline-block;
@@ -1118,13 +1118,12 @@
                         </div>
                     </div>
                     
+                    
                     <div class="highlight-item">
                         <div class="highlight-track">OKR 2 · KR 2.3 · Indisponibilidad</div>
-                        <div class="highlight-title">Experiencia Login — Mobile</div>
+                        <div class="highlight-title">Experiencia Login — OTP first en Mobile</div>
                         <div class="highlight-metric">
-                            Login UY/PY desplegado en <strong>Android mobile</strong><br>
-                            <strong>OTP first</strong> en Mobile<br>
-                            Simplificamos el acceso con código, y<strong> mejoramos 7 puntos </strong>strong> la conversión general de login.
+                            Simplificamos el acceso con código, y <strong>mejoramos 7 puntos</strong> la conversión general de login.
                         </div>
                     </div>
                     
@@ -1164,9 +1163,10 @@
             <section class="section">
                 <h2>Carry</h2>
                 <p style="margin-bottom: 28px; color: var(--muted); font-size: 1.05rem; font-family: 'Inter', sans-serif;">
-                    7 épicas que no cerraron en Q2 y continúan en Q3 — distribuidas en 4 equipos.
+                    11 épicas que no cerraron en Q2 y continúan en Q3 — distribuidas en 4 equipos.
                 </p>
                 <div class="carry-grid">
+                    <!-- Playback - Chromecast -->
                     <div class="carry-item">
                         <div class="carry-team">Playback</div>
                         <div class="carry-header">
@@ -1174,10 +1174,11 @@
                             <div class="carry-badge">1 épica</div>
                         </div>
                         <div class="carry-desc">
-                            Bloque cierra como workstream en Q2, pero 1 épica pasa a Q3.
+                            FPR-1944: Mejorar la experiencia de los senders (Android) fase 2.
                         </div>
                     </div>
                     
+                    <!-- Playback - Señales en la nube -->
                     <div class="carry-item">
                         <div class="carry-team">Playback</div>
                         <div class="carry-header">
@@ -1185,10 +1186,11 @@
                             <div class="carry-badge">2 épicas</div>
                         </div>
                         <div class="carry-desc">
-                            Validación de capacidad de infraestructura y mejores prácticas AWS pendientes.
+                            FPR-1849: Redundancia ante fallas | FPR-1850: Funcionamiento total desde la nube (live + funcionalidades).
                         </div>
                     </div>
                     
+                    <!-- Playback - Tendencias -->
                     <div class="carry-item">
                         <div class="carry-team">Playback</div>
                         <div class="carry-header">
@@ -1196,10 +1198,11 @@
                             <div class="carry-badge">1 épica</div>
                         </div>
                         <div class="carry-desc">
-                            Personalización y evolutivo en desarrollo, continúa en Q3.
+                            FPR-1844: Rediseño de home Tendencias + reproducción in app (Web).
                         </div>
                     </div>
                     
+                    <!-- Oferta y Onboarding - Experiencia Login -->
                     <div class="carry-item">
                         <div class="carry-team">Oferta y Onboarding</div>
                         <div class="carry-header">
@@ -1207,40 +1210,67 @@
                             <div class="carry-badge">1 épica</div>
                         </div>
                         <div class="carry-desc">
-                            Conversión WEB y tour contextual pendiente de cierre.
+                            FPR-1876: Actualizar el límite de dispositivos OTTs y estacionario.
                         </div>
                     </div>
                     
+                    <!-- Oferta y Onboarding - Experiencia Gestión de cuenta -->
                     <div class="carry-item">
                         <div class="carry-team">Oferta y Onboarding</div>
                         <div class="carry-header">
-                            <div class="carry-title">Mitigación de fallas</div>
+                            <div class="carry-title">Experiencia Gestión de cuenta</div>
                             <div class="carry-badge">1 épica</div>
                         </div>
                         <div class="carry-desc">
-                            Ampliación de cobertura de monitoreo en Watchdog de login.
+                            FPR-1935: Rediseño de mi cuenta en TVs.
                         </div>
                     </div>
                     
+                    <!-- Oferta y Onboarding - Sin bloque (RC) -->
+                    <div class="carry-item">
+                        <div class="carry-team">Oferta y Onboarding</div>
+                        <div class="carry-header">
+                            <div class="carry-title">Sin bloque</div>
+                            <div class="carry-badge">1 épica</div>
+                        </div>
+                        <div class="carry-desc">
+                            FPR-1913: Nuevo RC - Migración a los nuevos RC en iOS, Android y ATV.
+                        </div>
+                    </div>
+                    
+                    <!-- Dispositivos - Mitigación de fallas -->
+                    <div class="carry-item">
+                        <div class="carry-team">Dispositivos</div>
+                        <div class="carry-header">
+                            <div class="carry-title">Mitigación de fallas y reducción de tiempos</div>
+                            <div class="carry-badge">1 épica</div>
+                        </div>
+                        <div class="carry-desc">
+                            FPR-1800: Silent Reboot ATV (acciones preventivas).
+                        </div>
+                    </div>
+                    
+                    <!-- Dispositivos - Observabilidad y salud decos -->
                     <div class="carry-item">
                         <div class="carry-team">Dispositivos</div>
                         <div class="carry-header">
                             <div class="carry-title">Observabilidad y salud decos</div>
-                            <div class="carry-badge">1 épica</div>
+                            <div class="carry-badge">2 épicas</div>
                         </div>
                         <div class="carry-desc">
-                            Silent Reboot (Linux) y métricas de performance pendientes.
+                            FPR-1861: Escalabilidad asegurada (version sanity) | FPR-1691: ¿Estás ahí? Fase 1 Decos.
                         </div>
                     </div>
                     
+                    <!-- Pangea - Apificación FLOW <> Provisión -->
                     <div class="carry-item">
                         <div class="carry-team">Core</div>
                         <div class="carry-header">
-                            <div class="carry-title">Migración a Minerva 11</div>
+                            <div class="carry-title">Apificación FLOW &lt;&gt; Provisión</div>
                             <div class="carry-badge">1 épica</div>
                         </div>
                         <div class="carry-desc">
-                            Limpieza y apagado M10 en proceso, cierre estimado Q3.
+                            FPR-1906: Flujo de MORA - Implementación.
                         </div>
                     </div>
                 </div>
