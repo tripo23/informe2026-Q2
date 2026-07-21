@@ -732,6 +732,25 @@
             .podcast-content { flex-direction: column; text-align: center; }
             .podcast-text { text-align: center; }
         }
+        
+        /* Info box */
+        .info-box {
+            background: rgba(33, 219, 170, 0.08);
+            border-left: 3px solid var(--teal);
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
@@ -1165,6 +1184,10 @@
                 <p style="margin-bottom: 28px; color: var(--muted); font-size: 1.05rem; font-family: 'Inter', sans-serif;">
                     11 épicas que no cerraron en Q2 y continúan en Q3 — distribuidas en 4 equipos.
                 </p>
+                <div class="info-box">
+                    <div class="info-icon">ℹ️</div>
+                    <div>Ninguno de estos carry representa riesgo crítico para el negocio</div>
+                </div>
                 <div class="carry-grid">
                     <!-- Playback - Chromecast -->
                     <div class="carry-item">
